@@ -11,6 +11,28 @@ class Article(models.Model):
     class Meta:
         verbose_name = 'Статья'
         verbose_name_plural = 'Статьи'
+        ordering = ['-published_at']
 
     def __str__(self):
         return self.title
+
+
+class Tag(models.Model):
+    name = models.CharField(max_length=50)
+    article = models.ManyToManyField(Article, through='ArticleTag')
+    objects = models.Manager
+
+    def __str__(self):
+        return self.name
+
+
+class ArticleTag(models.Model):
+    tags = models.ForeignKey(Tag, on_delete=models.CASCADE)
+    articles = models.ForeignKey(Article, on_delete=models.CASCADE)
+    name = models.CharField(max_length=255)
+
+    def __str__(self):
+        return self.name
+
+
+
