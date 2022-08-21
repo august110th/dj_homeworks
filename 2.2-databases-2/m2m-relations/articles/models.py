@@ -21,6 +21,10 @@ class Article(models.Model):
 class Scope(models.Model):
     name = models.CharField(max_length=50)
     objects = models.Manager
+    is_main = models.BooleanField(verbose_name='Главный раздел', default=False)
+
+    class Meta:
+        ordering = ['-is_main']
 
     def __str__(self):
         return self.name
@@ -29,7 +33,6 @@ class Scope(models.Model):
 class ArticleScope(models.Model):
     scopes = models.ForeignKey(Scope, on_delete=models.CASCADE)
     articles = models.ForeignKey(Article, on_delete=models.CASCADE)
-    is_main = models.BooleanField(verbose_name='Основной раздел', default=False)
 
     def __str__(self):
         return f'{self.scopes} {self.articles}'
