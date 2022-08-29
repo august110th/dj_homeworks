@@ -41,3 +41,14 @@ class SensorCreate(CreateAPIView):
 class MeasurementsDataView(RetrieveUpdateAPIView):
     queryset = Measurements.objects.all()
     serializer_class = MeasurementsSerializer
+
+    def put(self, request, *args, **kwargs):
+        return self.update(request, *args, **kwargs)
+
+
+class MeasurementsCreateView(CreateAPIView):
+    queryset = Measurements.objects.all()
+    serializer_class = MeasurementsSerializer
+
+    def put(self, request, *args, **kwargs):
+        return self.create(request, *args, **kwargs)
