@@ -5,11 +5,11 @@ from logistic.models import Product, StockProduct, Stock
 class ProductPositionSerializer(serializers.ModelSerializer):
     class Meta:
         model = StockProduct
-        fields = ['product', 'quantity', 'price']
+        fields = ['product', 'stock', 'quantity', 'price']
 
 
 class ProductSerializer(serializers.ModelSerializer):
-    positions = ProductPositionSerializer(read_only=True, many=True)
+    positions = ProductPositionSerializer(many=True)
 
     class Meta:
         model = Product
