@@ -20,7 +20,7 @@ Content-Type: application/json
 ###
 
 # обновление продукта
-PATCH {{baseUrl}}/products/4/
+PATCH {{baseUrl}}/products/6/
 Content-Type: application/json
 
 {
@@ -30,7 +30,7 @@ Content-Type: application/json
 ###
 
 # удаление продукта
-DELETE {{baseUrl}}/products/5/
+DELETE {{baseUrl}}/products/6/
 Content-Type: application/json
 
 ###
@@ -46,12 +46,12 @@ POST {{baseUrl}}/stocks/
 Content-Type: application/json
 
 {
-  "address": "первый мой адрес не дом и не улица, мой адрес сегодня такой: www.ленинград-спб.ru3",
+  "address": "Lenina 23",
   "positions": [
     {
-      "product": 2,
-      "quantity": 250,
-      "price": 120.50
+      "product": 3,
+      "quantity": 2,
+      "price": 44
     },
     {
       "product": 3,
@@ -71,8 +71,8 @@ Content-Type: application/json
   "positions": [
     {
       "product": 2,
-      "quantity": 100,
-      "price": 130.80
+      "quantity": 102,
+      "price": 132.80
     },
     {
       "product": 3,
