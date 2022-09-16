@@ -24,6 +24,8 @@ class AdvertisementSerializer(serializers.ModelSerializer):
         model = Advertisement
         fields = ('id', 'title', 'description', 'creator',
                   'status', 'created_at', )
+        read_only_fields = ['creator']
+
 
     def create(self, validated_data):
         """Метод для создания"""
@@ -39,6 +41,7 @@ class AdvertisementSerializer(serializers.ModelSerializer):
 
     def validate(self, data):
         """Метод для валидации. Вызывается при создании и обновлении."""
+        if
 
         # TODO: добавьте требуемую валидацию
 
