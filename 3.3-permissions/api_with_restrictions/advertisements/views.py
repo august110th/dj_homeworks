@@ -5,6 +5,7 @@ from rest_framework.viewsets import ModelViewSet
 from advertisements.models import Advertisement
 from .serializers import AdvertisementSerializer
 from .permissions import IsOwner
+from .filters import AdvertisementFilter
 
 
 class AdvertisementViewSet(ModelViewSet):
@@ -12,7 +13,8 @@ class AdvertisementViewSet(ModelViewSet):
     serializer_class = AdvertisementSerializer
     permission_classes = [IsAuthenticated, IsOwner]
     filter_backends = [DjangoFilterBackend, SearchFilter]
-    filterset_fields = ['creator']
+    # filterset_fields = ['creator']
+    filterset_class = AdvertisementFilter
     search_fields = ['title', 'description', 'creator', 'created_at']
 
     """ViewSet для объявлений."""

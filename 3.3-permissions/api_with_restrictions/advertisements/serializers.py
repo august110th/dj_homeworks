@@ -41,7 +41,7 @@ class AdvertisementSerializer(serializers.ModelSerializer):
 
     def validate(self, data):
         """Метод для валидации. Вызывается при создании и обновлении."""
-        if
+
 
         # TODO: добавьте требуемую валидацию
 
