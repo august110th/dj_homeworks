@@ -27,11 +27,18 @@ class AdvertisementSerializer(serializers.ModelSerializer):
         read_only_fields = ['creator']
 
     def create(self, validated_data):
-        if len(Advertisement.objects.filter(creator=self.context["request"].user, status='OPEN')) > 10:
+        if len(Advertisement.objects.filter(creator=self.context["request"].user, status='OPEN')) > 9:
             raise ValidationError('Разрешено не более 10 объявлений')
 
         validated_data["creator"] = self.context["request"].user
         return super().create(validated_data)
+
+    def update(self, data, validated_data):
+        if len(Advertisement.objects.filter(creator=self.context["request"].user, status='OPEN')) > 9:
+            raise ValidationError('Разрешено не более 10 объявлений')
+
+        validated_data["creator"] = self.context["request"].user
+        return super().update(validated_data)
 
     def validate(self, data):
         return data
